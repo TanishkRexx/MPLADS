@@ -23,6 +23,9 @@ from "./pages/InvestigatorReports";
 import NationalAnalytics from "./pages/NationalAnalytics";
 import StateAnalytics from "./pages/StateAnalytics";
 
+import InvestigationsPage from "./pages/InvestigationsPage";
+import InvestigationDetailsPage from "./pages/InvestigationDetailsPage";
+
 import { useAuth } from "./context/AuthContext";
 
 
@@ -372,21 +375,7 @@ function AppContent() {
             LOGIN REQUIRED
         ===================================== */}
 
-        <Route
 
-          path="/investigator-projects"
-
-          element={
-
-            <InvestigatorProtectedRoute>
-
-              <InvestigatorProjects />
-
-            </InvestigatorProtectedRoute>
-
-          }
-
-        />
 
 
         {/* =====================================
@@ -395,21 +384,23 @@ function AppContent() {
             LOGIN REQUIRED
         ===================================== */}
 
-        <Route
+<Route
+  path="/investigations"
+  element={
+    <InvestigatorProtectedRoute>
+      <InvestigationsPage />
+    </InvestigatorProtectedRoute>
+  }
+/>
 
-          path="/investigations"
-
-          element={
-
-            <InvestigatorProtectedRoute>
-
-              <InvestigationsPage />
-
-            </InvestigatorProtectedRoute>
-
-          }
-
-        />
+<Route
+  path="/investigations/:projectId"
+  element={
+    <InvestigatorProtectedRoute>
+      <InvestigationDetailsPage />
+    </InvestigatorProtectedRoute>
+  }
+/>
 
 
         {/* =====================================
@@ -576,73 +567,6 @@ function ReportsPage() {
         <p className="mt-3 text-slate-500">
 
           View and manage your submitted reports.
-
-        </p>
-
-      </main>
-
-    </div>
-
-  );
-
-}
-
-/* =========================================
-   INVESTIGATOR PROJECTS
-========================================= */
-
-function InvestigatorProjects() {
-
-  return (
-
-    <div className="min-h-screen bg-[#f5f7fb]">
-
-      <main className="mx-auto max-w-[1450px] px-6 py-10">
-
-        <h1 className="text-3xl font-bold text-slate-800">
-
-          Project Investigation
-
-        </h1>
-
-
-        <p className="mt-3 text-slate-500">
-
-          Review and investigate sanctioned MPLADS projects.
-
-        </p>
-
-      </main>
-
-    </div>
-
-  );
-
-}
-
-
-/* =========================================
-   INVESTIGATIONS
-========================================= */
-
-function InvestigationsPage() {
-
-  return (
-
-    <div className="min-h-screen bg-[#f5f7fb]">
-
-      <main className="mx-auto max-w-[1450px] px-6 py-10">
-
-        <h1 className="text-3xl font-bold text-slate-800">
-
-          Active Investigations
-
-        </h1>
-
-
-        <p className="mt-3 text-slate-500">
-
-          Manage AI-flagged projects and active investigations.
 
         </p>
 
